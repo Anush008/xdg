@@ -1,0 +1,13 @@
+{
+  "name": "xdg",
+  "version": "1.0.0",
+  "description": "Something something CLI",
+  "repository": "https://github.com/Anush008/xdg",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": "./bin/runner.js",
+  "scripts": {
+    "install": "node install.js"
+  }
+}
