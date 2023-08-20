@@ -31,9 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm i @semantic-release/git @semantic-release/commit-analyzer conventional-changelog-conventionalcommits npmlog @google/semantic-release-replace-plugin @semantic-release/exec
-          npx semantic-release
+          NPM_PACKAGE_ROOT: "npm"
+        uses: anush/release@v2.4.0
 
     outputs:
         release-tag: ${{ steps.semantic-release.outputs.release-tag }}
