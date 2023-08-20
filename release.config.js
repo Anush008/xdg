@@ -1,32 +1,27 @@
 const { execSync } = require("node:child_process");
 
 const releaseConfig = {
-  branches: [
-    "+([0-9])?(.{+([0-9]),x}).x",
-    "main",
-    "next",
-    "next-major",
-    {
-      name: "beta",
-      prerelease: true,
-    },
-    {
-      name: "alpha",
-      prerelease: true,
-    },
+  branches: ["main"],
+  plugins: [
+    ["@semantic-release/commit-analyzer", { preset: "conventionalcommits" }],
+    ["@semantic-release/npm", { pkgRoot: "npm" }],
+    [
+      "@semantic-release/git",
+      {
+        assets: ["npm/package.json"],
+      },
+    ],
+    "@semantic-release/github",
   ],
-  plugins: [],
 };
-const noteKeywords = ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"];
+
 const {
   GITHUB_SHA,
-  GITHUB_REPOSITORY,
   GIT_COMMITTER_NAME,
   GIT_COMMITTER_EMAIL,
   GIT_AUTHOR_NAME,
   GIT_AUTHOR_EMAIL,
 } = process.env;
-const [owner, repo] = String(GITHUB_REPOSITORY).toLowerCase().split("/");
 const addPlugin = (plugin, options) => {
   return releaseConfig.plugins.push([plugin, options]);
 };
@@ -54,73 +49,6 @@ try {
 } catch (e) {
   console.error(e);
 }
-
-addPlugin("@semantic-release/commit-analyzer", {
-  preset: "conventionalcommits",
-  releaseRules: [
-    { breaking: true, release: "major" },
-    { type: "feat", release: "minor" },
-    { type: "fix", release: "patch" },
-    { type: "perf", release: "patch" },
-    { type: "revert", release: "patch" },
-    { type: "docs", release: "minor" },
-    { type: "style", release: "patch" },
-    { type: "refactor", release: "patch" },
-    { type: "test", release: "patch" },
-    { type: "build", release: "patch" },
-    { type: "ci", release: "patch" },
-    { type: "chore", release: false },
-  ],
-  parserOpts: {
-    noteKeywords,
-  },
-});
-
-addPlugin("@semantic-release/release-notes-generator", {
-  preset: "conventionalcommits",
-  parserOpts: {
-    noteKeywords,
-  },
-  writerOpts: {
-    commitsSort: ["subject", "scope"],
-  },
-  presetConfig: {
-    types: [
-      { type: "feat", section: "🍕 Features" },
-      { type: "feature", section: "🍕 Features" },
-      { type: "fix", section: "🐛 Bug Fixes" },
-      { type: "perf", section: "🔥 Performance Improvements" },
-      { type: "revert", section: "⏩ Reverts" },
-      { type: "docs", section: "📝 Documentation" },
-      { type: "style", section: "🎨 Styles" },
-      { type: "refactor", section: "🧑‍💻 Code Refactoring" },
-      { type: "test", section: "✅ Tests" },
-      { type: "build", section: "🤖 Build System" },
-      { type: "ci", section: "🔁 Continuous Integration" },
-    ],
-  },
-});
-
-addPlugin("@semantic-release/changelog", {
-  changelogTitle: `# 📦 ${owner}/${repo} changelog
-
-[![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
-
-> All notable changes to this project will be documented in this file`,
-});
-
-addPlugin("@semantic-release/npm", {
-  pkgRoot: "npm",
-});
-
-addPlugin("@semantic-release/git", {
-  assets: ["npm/package.json"],
-  message: `chore(<%= nextRelease.type %>): release <%= nextRelease.version %> <%= nextRelease.channel !== null ? \`on \${nextRelease.channel} channel \` : '' %>[skip ci]\n\n<%= nextRelease.notes %>`,
-});
-
-addPlugin("@semantic-release/github");
-addPlugin("semantic-release-major-tag");
 
 if (process.env.GITHUB_ACTIONS !== undefined) {
   addPlugin("@semantic-release/exec", {
