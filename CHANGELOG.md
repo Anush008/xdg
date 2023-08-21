@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.0](https://github.com/Anush008/xdg/compare/v1.11.0...v1.12.0) (2023-08-21)
+
+
+### 🍕 Features
+
+* package.json ([51a21e7](https://github.com/Anush008/xdg/commit/51a21e7deb3bb2624e012865941b03c2a8bb9fa7))
+
 ## [1.11.0](https://github.com/Anush008/xdg/compare/v1.10.0...v1.11.0) (2023-08-21)
 
 
