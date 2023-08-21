@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.11.0](https://github.com/Anush008/xdg/compare/v1.10.0...v1.11.0) (2023-08-21)
+
+
+### 🍕 Features
+
+* pkg.json commit ([f47120e](https://github.com/Anush008/xdg/commit/f47120e0292986774d6c96b2e3bf12331275a006))
+
 ## [1.10.0](https://github.com/Anush008/xdg/compare/v1.9.0...v1.10.0) (2023-08-20)
 
 
