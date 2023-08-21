@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.13.0](https://github.com/Anush008/xdg/compare/v1.12.0...v1.13.0) (2023-08-21)
+
+
+### 🍕 Features
+
+* release.yaml trigger ([4f78ef0](https://github.com/Anush008/xdg/commit/4f78ef03da695e1c00196eb8858675d3380d836e))
+
 ## [1.12.0](https://github.com/Anush008/xdg/compare/v1.11.0...v1.12.0) (2023-08-21)
 
 
