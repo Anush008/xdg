@@ -5,6 +5,18 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.15.0](https://github.com/Anush008/xdg/compare/v1.14.0...v1.15.0) (2023-08-21)
+
+
+### 🍕 Features
+
+* new rel trigger ([5d88d50](https://github.com/Anush008/xdg/commit/5d88d50c201ea6d92930da82f3d48d8f32ff555b))
+
+
+### 🐛 Bug Fixes
+
+* some trigger ([ec7d67d](https://github.com/Anush008/xdg/commit/ec7d67d07ad4b89e9b90d14c6513a0503fbb19f0))
+
 ## [1.14.0](https://github.com/Anush008/xdg/compare/v1.13.0...v1.14.0) (2023-08-21)
 
 
