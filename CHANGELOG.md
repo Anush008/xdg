@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.16.0](https://github.com/Anush008/xdg/compare/v1.15.0...v1.16.0) (2023-08-22)
+
+
+### 🍕 Features
+
+* another trigger ([fb0274f](https://github.com/Anush008/xdg/commit/fb0274f3352993941874b7d0d2448c09814236a8))
+
 ## [1.15.0](https://github.com/Anush008/xdg/compare/v1.14.0...v1.15.0) (2023-08-21)
 
 
